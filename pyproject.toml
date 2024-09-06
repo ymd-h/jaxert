@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "jaxert"
+dynamic = ["version"]
+dependencies = [
+  "jax",
+]
+requires-python = ">= 3.8"
+readme = "README.md"
+license = {text = "MIT License"}
+
+
+[tool.hatch.version]
+path = "src/jaxert/version.py"
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/jaxert"]
