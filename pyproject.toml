@@ -17,6 +17,12 @@ license = {text = "MIT License"}
 path = "src/jaxert/version.py"
 
 
+[tool.hatch.build.targets.sdist]
+exclude = [
+  ".github",
+  "tests",
+]
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/jaxert"]
 
