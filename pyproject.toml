@@ -59,6 +59,7 @@ source = ["jaxert"]
 
 [tool.coverage.paths]
 source = [
+  "jaxert",
   "src/jaxert",
   "*/site-packages/jaxert",
 ]
