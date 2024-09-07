@@ -9,17 +9,14 @@ jobs:
   test:
     strategy:
       matrix:
-        runs-on: [ubuntu-latest, macos-13, maxos-14, windows-latest]
+        runs-on: [ubuntu-latest, macos-13, macos-14, windows-latest]
       fail-fast: false
     runs-on: ${{ matrix.runs-on }}
     steps:
       - uses: actions/checkout@v4
       - uses: pypa/hatch@install
-      - runs: |
+      - run: |
           hatch run test:run
           hatch run cov:combine
-          echo '## Test Coverage on ${{ matrix.runs-on }}' >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          hatch -q run cov:report >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
+          { echo '## Test Coverage on ${{ matrix.runs-on }}'; echo '```'; hatch -q run cov:report; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
         shell: bash
