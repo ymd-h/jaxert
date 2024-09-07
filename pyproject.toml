@@ -20,6 +20,8 @@ path = "src/jaxert/version.py"
 [tool.hatch.build.targets.sdist]
 exclude = [
   ".github",
+  ".gitmodules",
+  "dev-py",
   "tests",
 ]
 
